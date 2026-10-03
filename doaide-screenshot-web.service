@@ -1,0 +1,15 @@
+[Unit]
+Description=DoAide Screenshot Web
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/www/doaide-screenshot
+ExecStart=/usr/bin/npx serve dist -s -l tcp://172.18.0.1:3055
+Restart=always
+RestartSec=5
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
