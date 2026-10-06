@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://screenshot.doaide.com/sitemap.xml
