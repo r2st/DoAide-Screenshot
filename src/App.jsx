@@ -7,6 +7,14 @@ import TweetScreenshot from './components/TweetScreenshot/TweetScreenshot';
 import BrowserMockup from './components/BrowserMockup/BrowserMockup';
 import PhoneMockup from './components/PhoneMockup/PhoneMockup';
 import ComparisonSlider from './components/ComparisonSlider/ComparisonSlider';
+import WebsiteCapture from './components/WebsiteCapture/WebsiteCapture';
+import ImageAnnotator from './components/ImageAnnotator/ImageAnnotator';
+import ImageCropper from './components/ImageCropper/ImageCropper';
+import ScreenshotToPdf from './components/ScreenshotToPdf/ScreenshotToPdf';
+import Blog from './pages/Blog';
+import CodeScreenshotGuide from './pages/blog/CodeScreenshotGuide';
+import AnnotationGuide from './pages/blog/AnnotationGuide';
+import FreeScreenshotTools2025 from './pages/blog/FreeScreenshotTools2025';
 
 export default function App() {
   return (
@@ -21,6 +29,14 @@ export default function App() {
             <Route path="/browser" element={<BrowserMockup />} />
             <Route path="/phone" element={<PhoneMockup />} />
             <Route path="/compare" element={<ComparisonSlider />} />
+            <Route path="/capture" element={<WebsiteCapture />} />
+            <Route path="/annotate" element={<ImageAnnotator />} />
+            <Route path="/crop" element={<ImageCropper />} />
+            <Route path="/pdf" element={<ScreenshotToPdf />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/how-to-create-beautiful-code-screenshots" element={<CodeScreenshotGuide />} />
+            <Route path="/blog/screenshot-annotation-complete-guide" element={<AnnotationGuide />} />
+            <Route path="/blog/free-screenshot-tools-for-designers-2025" element={<FreeScreenshotTools2025 />} />
           </Routes>
         </main>
         <Footer />

@@ -82,6 +82,64 @@ const TOOLS = [
     gradient: 'from-amber-600/20 to-red-600/20',
     border: 'border-amber-500/20',
   },
+  {
+    path: '/capture',
+    title: 'Website Capture',
+    description: 'Enter any URL to capture a beautiful website screenshot',
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" className="w-12 h-12">
+        <rect x="4" y="6" width="40" height="36" rx="4" stroke="#F0B429" strokeWidth="2.5" fill="none" />
+        <circle cx="24" cy="26" r="8" stroke="#64748B" strokeWidth="2" fill="none" />
+        <circle cx="24" cy="26" r="3" fill="#F0B429" />
+        <line x1="4" y1="14" x2="44" y2="14" stroke="#64748B" strokeWidth="2" />
+      </svg>
+    ),
+    gradient: 'from-teal-600/20 to-blue-600/20',
+    border: 'border-teal-500/20',
+  },
+  {
+    path: '/annotate',
+    title: 'Image Annotator',
+    description: 'Add arrows, shapes, text, highlights and blur to images',
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" className="w-12 h-12">
+        <rect x="4" y="4" width="40" height="40" rx="4" stroke="#F0B429" strokeWidth="2.5" fill="none" />
+        <path d="M14 34L20 16L26 34" stroke="#64748B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        <line x1="16" y1="28" x2="24" y2="28" stroke="#64748B" strokeWidth="2" strokeLinecap="round" />
+        <path d="M30 18L38 26" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M38 26L35 23M38 26L35 29" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    ),
+    gradient: 'from-red-600/20 to-orange-600/20',
+    border: 'border-red-500/20',
+  },
+  {
+    path: '/crop',
+    title: 'Image Cropper',
+    description: 'Crop images to any size with aspect ratio presets',
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" className="w-12 h-12">
+        <path d="M14 4V34H44" stroke="#F0B429" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M34 44V14H4" stroke="#64748B" strokeWidth="2.5" strokeLinecap="round" />
+      </svg>
+    ),
+    gradient: 'from-violet-600/20 to-purple-600/20',
+    border: 'border-violet-500/20',
+  },
+  {
+    path: '/pdf',
+    title: 'Screenshot to PDF',
+    description: 'Convert multiple screenshots into a single PDF document',
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" className="w-12 h-12">
+        <rect x="8" y="4" width="32" height="40" rx="3" stroke="#F0B429" strokeWidth="2.5" fill="none" />
+        <path d="M16 4V14H8" stroke="#F0B429" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        <text x="14" y="32" fontSize="12" fill="#64748B" fontFamily="Inter, sans-serif" fontWeight="700">PDF</text>
+      </svg>
+    ),
+    gradient: 'from-rose-600/20 to-pink-600/20',
+    border: 'border-rose-500/20',
+  },
 ];
 
 export default function Home() {
@@ -96,7 +154,7 @@ export default function Home() {
             <span className="gradient-text">in Seconds</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
-            Create stunning code screenshots, tweet cards, browser mockups, and more.
+            Create stunning code screenshots, tweet cards, browser mockups, annotate images, crop, and export to PDF.
             Free forever. No login required.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
@@ -119,7 +177,7 @@ export default function Home() {
       {/* Tools Grid */}
       <section id="tools" className="max-w-6xl mx-auto px-4 py-16">
         <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-12">
-          5 Free Tools, Zero Friction
+          9 Free Tools, Zero Friction
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {TOOLS.map(tool => (
@@ -155,6 +213,24 @@ export default function Home() {
             <div className="text-3xl mb-3">&#128274;</div>
             <h3 className="text-white font-semibold mb-2">100% Private</h3>
             <p className="text-slate-400 text-sm">Everything runs in your browser. No uploads, no tracking.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog CTA */}
+      <section className="max-w-4xl mx-auto px-4 py-8">
+        <div className="p-8 rounded-2xl border border-slate-700/50 bg-slate-800/30">
+          <h2 className="text-xl font-bold text-white mb-3 text-center">From the Blog</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link to="/blog/how-to-create-beautiful-code-screenshots" className="text-slate-300 hover:text-brand-gold text-sm no-underline transition-colors">
+              How to Create Beautiful Code Screenshots for Social Media &rarr;
+            </Link>
+            <Link to="/blog/screenshot-annotation-complete-guide" className="text-slate-300 hover:text-brand-gold text-sm no-underline transition-colors">
+              The Complete Guide to Screenshot Annotation &rarr;
+            </Link>
+            <Link to="/blog/free-screenshot-tools-for-designers-2025" className="text-slate-300 hover:text-brand-gold text-sm no-underline transition-colors">
+              9 Free Screenshot Tools for Designers in 2025 &rarr;
+            </Link>
           </div>
         </div>
       </section>
