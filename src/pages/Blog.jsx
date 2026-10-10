@@ -3,6 +3,30 @@ import { useEffect } from 'react';
 
 const POSTS = [
   {
+    slug: 'image-annotation-remote-teams-guide',
+    title: 'Image Annotation and Screenshot Markup for Remote Teams: A Complete Guide',
+    description: 'How remote teams in India and worldwide use screenshot annotation and image markup to communicate faster. Free tools, workflows, and best practices.',
+    date: '2025-10-16',
+    readTime: '8 min read',
+    tags: ['Annotation', 'Remote Work'],
+  },
+  {
+    slug: 'website-screenshot-seo-audit-guide',
+    title: 'How to Use Website Screenshots for SEO Audits and Competitor Analysis',
+    description: 'Learn how website screenshots help with SEO audits, competitor research, and visual regression testing. Free tools and workflows for digital marketers.',
+    date: '2025-10-14',
+    readTime: '9 min read',
+    tags: ['SEO', 'Website Capture'],
+  },
+  {
+    slug: 'screen-capture-guide-windows-mac-linux',
+    title: 'How to Take Screen Captures on Windows, Mac, and Linux in 2025',
+    description: 'Complete guide to screen capture on every platform. Keyboard shortcuts, built-in tools, and free online screenshot tools for Windows, Mac, and Linux.',
+    date: '2025-10-12',
+    readTime: '8 min read',
+    tags: ['Screen Capture', 'Productivity'],
+  },
+  {
     slug: 'how-to-create-beautiful-code-screenshots',
     title: 'How to Create Beautiful Code Screenshots for Social Media',
     description: 'Learn to make eye-catching code screenshots that stand out on Twitter, LinkedIn, and dev blogs. Step-by-step guide with free tools.',
