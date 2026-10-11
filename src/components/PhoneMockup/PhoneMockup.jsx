@@ -149,7 +149,7 @@ export default function PhoneMockup() {
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Preview */}
           <div className="flex-1 flex flex-col items-center">
-            <div className="w-full overflow-auto rounded-xl border border-slate-700/50 bg-slate-900/50 p-6 flex justify-center">
+            <div className="w-full overflow-auto rounded-xl border border-da-border bg-[var(--da-input-bg)]/50 p-6 flex justify-center">
               <div
                 ref={captureRef}
                 style={{ background: bg, padding: `${padding}px`, position: 'relative' }}
@@ -205,24 +205,24 @@ export default function PhoneMockup() {
             <input ref={fileInputRef} type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
 
             <div className="flex gap-3 mt-4 w-full">
-              <button onClick={() => fileInputRef.current?.click()} className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-colors">Upload Image</button>
-              <button onClick={handleExport} disabled={exporting} className="flex-1 bg-brand-gold hover:bg-yellow-500 text-slate-900 font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50">
+              <button onClick={() => fileInputRef.current?.click()} className="px-6 py-3 bg-da-surface hover:bg-da-card-hover text-da-text rounded-lg transition-colors">Upload Image</button>
+              <button onClick={handleExport} disabled={exporting} className="flex-1 bg-brand-primary hover:bg-brand-primary-hover text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50">
                 {exporting ? 'Exporting...' : 'Download PNG'}
               </button>
-              <button onClick={handleCopy} disabled={exporting} className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-colors disabled:opacity-50">Copy</button>
+              <button onClick={handleCopy} disabled={exporting} className="px-6 py-3 bg-da-surface hover:bg-da-card-hover text-da-text rounded-lg transition-colors disabled:opacity-50">Copy</button>
             </div>
           </div>
 
           {/* Controls */}
           <div className="w-full lg:w-72 space-y-4">
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Device</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Device</label>
               <div className="space-y-2">
                 {DEVICES.map((dev, i) => (
                   <button
                     key={i}
                     onClick={() => setDevice(i)}
-                    className={`w-full px-3 py-2 rounded-lg text-xs font-medium text-left transition-colors ${device === i ? 'bg-brand-gold text-slate-900' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}`}
+                    className={`w-full px-3 py-2 rounded-lg text-xs font-medium text-left transition-colors ${device === i ? 'bg-brand-primary text-white' : 'bg-da-surface text-da-muted hover:bg-da-card-hover'}`}
                   >
                     {dev.name}
                   </button>
@@ -230,14 +230,14 @@ export default function PhoneMockup() {
               </div>
             </div>
 
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Color</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Color</label>
               <div className="flex gap-2">
                 {COLORS.map((col, i) => (
                   <button
                     key={i}
                     onClick={() => setColor(i)}
-                    className={`w-10 h-10 rounded-full border-2 transition-colors ${color === i ? 'border-brand-gold' : 'border-transparent'}`}
+                    className={`w-10 h-10 rounded-full border-2 transition-colors ${color === i ? 'border-brand-primary' : 'border-transparent'}`}
                     style={{ background: col.frame }}
                     title={col.name}
                   />
@@ -245,24 +245,24 @@ export default function PhoneMockup() {
               </div>
             </div>
 
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Orientation</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Orientation</label>
               <div className="flex gap-2">
-                <button onClick={() => setOrientation('portrait')} className={`flex-1 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${orientation === 'portrait' ? 'bg-brand-gold text-slate-900' : 'bg-slate-700 text-slate-300'}`}>Portrait</button>
-                <button onClick={() => setOrientation('landscape')} className={`flex-1 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${orientation === 'landscape' ? 'bg-brand-gold text-slate-900' : 'bg-slate-700 text-slate-300'}`}>Landscape</button>
+                <button onClick={() => setOrientation('portrait')} className={`flex-1 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${orientation === 'portrait' ? 'bg-brand-primary text-white' : 'bg-da-surface text-da-muted'}`}>Portrait</button>
+                <button onClick={() => setOrientation('landscape')} className={`flex-1 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${orientation === 'landscape' ? 'bg-brand-primary text-white' : 'bg-da-surface text-da-muted'}`}>Landscape</button>
               </div>
             </div>
 
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Padding: {padding}px</label>
-              <input type="range" min="16" max="96" value={padding} onChange={e => setPadding(Number(e.target.value))} className="w-full accent-brand-gold" />
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Padding: {padding}px</label>
+              <input type="range" min="16" max="96" value={padding} onChange={e => setPadding(Number(e.target.value))} className="w-full accent-brand-primary" />
             </div>
 
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
               <label className="flex items-center justify-between cursor-pointer">
-                <span className="text-sm text-slate-300">Shadow</span>
+                <span className="text-sm text-da-muted">Shadow</span>
                 <div
-                  className={`w-10 h-5 rounded-full transition-colors relative cursor-pointer ${showShadow ? 'bg-brand-gold' : 'bg-slate-600'}`}
+                  className={`w-10 h-5 rounded-full transition-colors relative cursor-pointer ${showShadow ? 'bg-brand-primary' : 'bg-da-border'}`}
                   onClick={() => setShowShadow(!showShadow)}
                 >
                   <div className={`w-4 h-4 rounded-full bg-white absolute top-0.5 transition-transform ${showShadow ? 'translate-x-5' : 'translate-x-0.5'}`} />
@@ -270,17 +270,17 @@ export default function PhoneMockup() {
               </label>
             </div>
 
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Background</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Background</label>
               <div className="flex gap-2 mb-3">
                 {['gradient', 'solid', 'transparent'].map(t => (
-                  <button key={t} onClick={() => setBgType(t)} className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${bgType === t ? 'bg-brand-gold text-slate-900' : 'bg-slate-700 text-slate-300'}`}>{t.charAt(0).toUpperCase() + t.slice(1)}</button>
+                  <button key={t} onClick={() => setBgType(t)} className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${bgType === t ? 'bg-brand-primary text-white' : 'bg-da-surface text-da-muted'}`}>{t.charAt(0).toUpperCase() + t.slice(1)}</button>
                 ))}
               </div>
               {bgType === 'gradient' && (
                 <div className="grid grid-cols-4 gap-2">
                   {GRADIENTS.map((g, i) => (
-                    <button key={i} onClick={() => setBgGradient(g)} className={`w-full h-8 rounded-md border-2 ${bgGradient === g ? 'border-brand-gold' : 'border-transparent'}`} style={{ background: g }} />
+                    <button key={i} onClick={() => setBgGradient(g)} className={`w-full h-8 rounded-md border-2 ${bgGradient === g ? 'border-brand-primary' : 'border-transparent'}`} style={{ background: g }} />
                   ))}
                 </div>
               )}

@@ -277,14 +277,14 @@ export default function ImageAnnotator() {
     <div className="min-h-screen">
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold text-white mb-2">Image Annotator</h1>
-          <p className="text-slate-400 text-sm">Add arrows, shapes, text, highlights, and blur to any image</p>
+          <h1 className="text-2xl font-bold text-da-text mb-2">Image Annotator</h1>
+          <p className="text-da-muted text-sm">Add arrows, shapes, text, highlights, and blur to any image</p>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Canvas */}
           <div className="flex-1 flex flex-col items-center">
-            <div className="w-full overflow-auto rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
+            <div className="w-full overflow-auto rounded-xl border border-da-border bg-[var(--da-input-bg)]/50 p-4">
               {!image ? (
                 <div
                   onClick={() => fileInputRef.current?.click()}
@@ -293,8 +293,8 @@ export default function ImageAnnotator() {
                   className="flex flex-col items-center justify-center py-20 cursor-pointer"
                 >
                   <div className="text-5xl text-slate-600 mb-4">+</div>
-                  <p className="text-slate-400 text-sm font-medium mb-1">Upload an image to annotate</p>
-                  <p className="text-slate-500 text-xs">Click or drag & drop</p>
+                  <p className="text-da-muted text-sm font-medium mb-1">Upload an image to annotate</p>
+                  <p className="text-da-muted text-xs">Click or drag & drop</p>
                 </div>
               ) : (
                 <div className="flex justify-center relative">
@@ -326,10 +326,10 @@ export default function ImageAnnotator() {
                         onKeyDown={e => e.key === 'Enter' && handleTextSubmit()}
                         autoFocus
                         placeholder="Type text..."
-                        className="bg-slate-800 border border-brand-gold text-white text-sm rounded px-2 py-1 w-40 focus:outline-none"
+                        className="bg-[var(--da-sidebar-bg)] border border-brand-primary text-da-text text-sm rounded px-2 py-1 w-40 focus:outline-none"
                       />
-                      <button onClick={handleTextSubmit} className="bg-brand-gold text-slate-900 text-xs px-2 rounded font-medium">Add</button>
-                      <button onClick={() => setTextPos(null)} className="bg-slate-700 text-white text-xs px-2 rounded">Cancel</button>
+                      <button onClick={handleTextSubmit} className="bg-brand-primary text-white text-xs px-2 rounded font-medium">Add</button>
+                      <button onClick={() => setTextPos(null)} className="bg-da-surface text-da-text text-xs px-2 rounded">Cancel</button>
                     </div>
                   )}
                 </div>
@@ -339,26 +339,26 @@ export default function ImageAnnotator() {
             <input ref={fileInputRef} type="file" accept="image/*" onChange={handleUpload} className="hidden" />
 
             <div className="flex gap-3 mt-4 w-full">
-              <button onClick={() => fileInputRef.current?.click()} className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-colors">
+              <button onClick={() => fileInputRef.current?.click()} className="px-6 py-3 bg-da-surface hover:bg-da-card-hover text-da-text rounded-lg transition-colors">
                 {image ? 'Change' : 'Upload'}
               </button>
-              <button onClick={handleExport} disabled={exporting || !image} className="flex-1 bg-brand-gold hover:bg-yellow-500 text-slate-900 font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50">
+              <button onClick={handleExport} disabled={exporting || !image} className="flex-1 bg-brand-primary hover:bg-brand-primary-hover text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50">
                 {exporting ? 'Exporting...' : 'Download PNG'}
               </button>
-              <button onClick={handleCopy} disabled={exporting || !image} className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-colors disabled:opacity-50">Copy</button>
+              <button onClick={handleCopy} disabled={exporting || !image} className="px-6 py-3 bg-da-surface hover:bg-da-card-hover text-da-text rounded-lg transition-colors disabled:opacity-50">Copy</button>
             </div>
           </div>
 
           {/* Controls */}
           <div className="w-full lg:w-72 space-y-4">
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Tool</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Tool</label>
               <div className="grid grid-cols-2 gap-2">
                 {TOOLS.map(t => (
                   <button
                     key={t.id}
                     onClick={() => setTool(t.id)}
-                    className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${tool === t.id ? 'bg-brand-gold text-slate-900' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}`}
+                    className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${tool === t.id ? 'bg-brand-primary text-white' : 'bg-da-surface text-da-muted hover:bg-da-card-hover'}`}
                   >
                     {t.icon} {t.label}
                   </button>
@@ -366,27 +366,27 @@ export default function ImageAnnotator() {
               </div>
             </div>
 
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Color</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Color</label>
               <div className="grid grid-cols-5 gap-2">
                 {COLORS.map(c => (
                   <button
                     key={c}
                     onClick={() => setColor(c)}
-                    className={`w-full h-8 rounded-md border-2 transition-colors ${color === c ? 'border-brand-gold' : 'border-transparent'}`}
+                    className={`w-full h-8 rounded-md border-2 transition-colors ${color === c ? 'border-brand-primary' : 'border-transparent'}`}
                     style={{ background: c, boxShadow: c === '#000000' ? 'inset 0 0 0 1px #333' : c === '#ffffff' ? 'inset 0 0 0 1px #ccc' : 'none' }}
                   />
                 ))}
               </div>
             </div>
 
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Stroke Width: {strokeWidth}px</label>
-              <input type="range" min="1" max="10" value={strokeWidth} onChange={e => setStrokeWidth(Number(e.target.value))} className="w-full accent-brand-gold" />
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Stroke Width: {strokeWidth}px</label>
+              <input type="range" min="1" max="10" value={strokeWidth} onChange={e => setStrokeWidth(Number(e.target.value))} className="w-full accent-brand-primary" />
             </div>
 
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 space-y-2">
-              <button onClick={handleUndo} disabled={annotations.length === 0} className="w-full px-3 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded-lg text-xs font-medium transition-colors disabled:opacity-50">
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border space-y-2">
+              <button onClick={handleUndo} disabled={annotations.length === 0} className="w-full px-3 py-2 bg-da-surface hover:bg-da-card-hover text-da-muted rounded-lg text-xs font-medium transition-colors disabled:opacity-50">
                 Undo Last
               </button>
               <button onClick={handleClear} disabled={annotations.length === 0} className="w-full px-3 py-2 bg-red-900/50 hover:bg-red-900/80 text-red-300 rounded-lg text-xs font-medium transition-colors disabled:opacity-50">

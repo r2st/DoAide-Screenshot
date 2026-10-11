@@ -90,7 +90,7 @@ export default function TweetScreenshot() {
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Preview */}
           <div className="flex-1 flex flex-col items-center">
-            <div className="w-full overflow-auto rounded-xl border border-slate-700/50 bg-slate-900/50 p-6 flex justify-center">
+            <div className="w-full overflow-auto rounded-xl border border-da-border bg-[var(--da-input-bg)]/50 p-6 flex justify-center">
               <div
                 ref={captureRef}
                 style={{
@@ -158,7 +158,7 @@ export default function TweetScreenshot() {
               <textarea
                 value={text}
                 onChange={e => setText(e.target.value)}
-                className="w-full h-28 bg-slate-900 border border-slate-700 rounded-lg p-4 text-slate-200 text-sm resize-y focus:outline-none focus:border-brand-gold/50"
+                className="w-full h-28 bg-[var(--da-input-bg)] border border-da-border rounded-lg p-4 text-da-text text-sm resize-y focus:outline-none focus:border-brand-primary/50"
                 placeholder="Type your quote or tweet..."
               />
               <div className="flex gap-3">
@@ -166,14 +166,14 @@ export default function TweetScreenshot() {
                   type="text"
                   value={author}
                   onChange={e => setAuthor(e.target.value)}
-                  className="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-slate-200 text-sm focus:outline-none focus:border-brand-gold/50"
+                  className="flex-1 bg-[var(--da-input-bg)] border border-da-border rounded-lg px-4 py-2 text-da-text text-sm focus:outline-none focus:border-brand-primary/50"
                   placeholder="Author name"
                 />
                 <input
                   type="text"
                   value={handle}
                   onChange={e => setHandle(e.target.value)}
-                  className="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-slate-200 text-sm focus:outline-none focus:border-brand-gold/50"
+                  className="flex-1 bg-[var(--da-input-bg)] border border-da-border rounded-lg px-4 py-2 text-da-text text-sm focus:outline-none focus:border-brand-primary/50"
                   placeholder="@handle or source"
                 />
               </div>
@@ -184,14 +184,14 @@ export default function TweetScreenshot() {
               <button
                 onClick={handleExport}
                 disabled={exporting}
-                className="flex-1 bg-brand-gold hover:bg-yellow-500 text-slate-900 font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50"
+                className="flex-1 bg-brand-primary hover:bg-brand-primary-hover text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50"
               >
                 {exporting ? 'Exporting...' : 'Download PNG'}
               </button>
               <button
                 onClick={handleCopy}
                 disabled={exporting}
-                className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-colors disabled:opacity-50"
+                className="px-6 py-3 bg-da-surface hover:bg-da-card-hover text-da-text rounded-lg transition-colors disabled:opacity-50"
               >
                 Copy
               </button>
@@ -201,14 +201,14 @@ export default function TweetScreenshot() {
           {/* Controls */}
           <div className="w-full lg:w-72 space-y-4">
             {/* Aspect Ratio */}
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Aspect Ratio</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Aspect Ratio</label>
               <div className="grid grid-cols-2 gap-2">
                 {ASPECT_RATIOS.map((a, i) => (
                   <button
                     key={i}
                     onClick={() => setAspectRatio(i)}
-                    className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${aspectRatio === i ? 'bg-brand-gold text-slate-900' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}`}
+                    className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${aspectRatio === i ? 'bg-brand-primary text-white' : 'bg-da-surface text-da-muted hover:bg-da-card-hover'}`}
                   >
                     {a.name} ({a.label})
                   </button>
@@ -217,14 +217,14 @@ export default function TweetScreenshot() {
             </div>
 
             {/* Background */}
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Background</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Background</label>
               <div className="grid grid-cols-4 gap-2">
                 {GRADIENTS.map((g, i) => (
                   <button
                     key={i}
                     onClick={() => setGradient(g.value)}
-                    className={`w-full h-8 rounded-md border-2 transition-colors ${gradient === g.value ? 'border-brand-gold' : 'border-transparent'}`}
+                    className={`w-full h-8 rounded-md border-2 transition-colors ${gradient === g.value ? 'border-brand-primary' : 'border-transparent'}`}
                     style={{ background: g.value }}
                     title={g.name}
                   />
@@ -233,14 +233,14 @@ export default function TweetScreenshot() {
             </div>
 
             {/* Font */}
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Font</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Font</label>
               <div className="grid grid-cols-2 gap-2">
                 {FONTS.map((f, i) => (
                   <button
                     key={i}
                     onClick={() => setFont(f.value)}
-                    className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${font === f.value ? 'bg-brand-gold text-slate-900' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}`}
+                    className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${font === f.value ? 'bg-brand-primary text-white' : 'bg-da-surface text-da-muted hover:bg-da-card-hover'}`}
                   >
                     {f.name}
                   </button>
@@ -249,24 +249,24 @@ export default function TweetScreenshot() {
             </div>
 
             {/* Font Size */}
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Font Size: {fontSize}px</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Font Size: {fontSize}px</label>
               <input
                 type="range" min="16" max="48" value={fontSize}
                 onChange={e => setFontSize(Number(e.target.value))}
-                className="w-full accent-brand-gold"
+                className="w-full accent-brand-primary"
               />
             </div>
 
             {/* Text Alignment */}
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Alignment</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Alignment</label>
               <div className="flex gap-2">
                 {['left', 'center', 'right'].map(a => (
                   <button
                     key={a}
                     onClick={() => setTextAlign(a)}
-                    className={`flex-1 px-3 py-2 rounded-lg text-xs font-medium transition-colors capitalize ${textAlign === a ? 'bg-brand-gold text-slate-900' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}`}
+                    className={`flex-1 px-3 py-2 rounded-lg text-xs font-medium transition-colors capitalize ${textAlign === a ? 'bg-brand-primary text-white' : 'bg-da-surface text-da-muted hover:bg-da-card-hover'}`}
                   >
                     {a}
                   </button>
@@ -275,18 +275,18 @@ export default function TweetScreenshot() {
             </div>
 
             {/* Text Color */}
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Text Color</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Text Color</label>
               <div className="flex gap-2">
                 <button
                   onClick={() => setTextColor('white')}
-                  className={`flex-1 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${textColor === 'white' ? 'bg-brand-gold text-slate-900' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}`}
+                  className={`flex-1 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${textColor === 'white' ? 'bg-brand-primary text-white' : 'bg-da-surface text-da-muted hover:bg-da-card-hover'}`}
                 >
                   White
                 </button>
                 <button
                   onClick={() => setTextColor('dark')}
-                  className={`flex-1 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${textColor === 'dark' ? 'bg-brand-gold text-slate-900' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}`}
+                  className={`flex-1 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${textColor === 'dark' ? 'bg-brand-primary text-white' : 'bg-da-surface text-da-muted hover:bg-da-card-hover'}`}
                 >
                   Dark
                 </button>
@@ -294,14 +294,14 @@ export default function TweetScreenshot() {
             </div>
 
             {/* Card Style */}
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Style</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Style</label>
               <div className="grid grid-cols-2 gap-2">
                 {['minimal', 'quotes', 'border', 'shadow'].map(s => (
                   <button
                     key={s}
                     onClick={() => setCardStyle(s)}
-                    className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors capitalize ${cardStyle === s ? 'bg-brand-gold text-slate-900' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}`}
+                    className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors capitalize ${cardStyle === s ? 'bg-brand-primary text-white' : 'bg-da-surface text-da-muted hover:bg-da-card-hover'}`}
                   >
                     {s}
                   </button>

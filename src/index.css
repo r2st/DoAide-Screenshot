@@ -4,10 +4,46 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --da-primary: #0D9488;
+  --da-primary-hover: #0F766E;
+  --da-bg: #FFFFFF;
+  --da-surface: #F8FFFE;
+  --da-text: #1E293B;
+  --da-text-secondary: #64748B;
+  --da-border: #E2E8F0;
+  --da-card: #FFFFFF;
+  --da-card-hover: #F1F5F9;
+  --da-nav-bg: rgba(255, 255, 255, 0.85);
+  --da-glass-border: rgba(148, 163, 184, 0.2);
+  --da-input-bg: #F8FAFC;
+  --da-input-border: #CBD5E1;
+  --da-sidebar-bg: #F1F5F9;
+  --da-code-bg: #F1F5F9;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --da-bg: #020617;
+    --da-surface: #0F172A;
+    --da-text: #E2E8F0;
+    --da-text-secondary: #94A3B8;
+    --da-border: #334155;
+    --da-card: #0F172A;
+    --da-card-hover: #1E293B;
+    --da-nav-bg: rgba(15, 23, 42, 0.85);
+    --da-glass-border: rgba(148, 163, 184, 0.1);
+    --da-input-bg: #0F172A;
+    --da-input-border: #334155;
+    --da-sidebar-bg: #1E293B;
+    --da-code-bg: #1E293B;
+  }
+}
+
 body {
   margin: 0;
-  background: #020617;
-  color: #e2e8f0;
+  background: var(--da-bg);
+  color: var(--da-text);
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -17,36 +53,36 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: var(--da-surface);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: var(--da-border);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: var(--da-text-secondary);
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #F0B429, #f59e0b, #fbbf24);
+  background: linear-gradient(135deg, #0D9488, #14B8A6, #2DD4BF);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .glass {
-  background: rgba(15, 23, 42, 0.8);
+  background: var(--da-nav-bg);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-bottom: 1px solid var(--da-glass-border);
 }
 
 .mesh-gradient {
   background:
-    radial-gradient(at 40% 20%, hsla(28, 100%, 74%, 0.08) 0px, transparent 50%),
-    radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 0.06) 0px, transparent 50%),
-    radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 0.05) 0px, transparent 50%),
-    radial-gradient(at 80% 50%, hsla(340, 100%, 76%, 0.06) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, hsla(22, 100%, 77%, 0.06) 0px, transparent 50%);
+    radial-gradient(at 40% 20%, rgba(13, 148, 136, 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(20, 184, 166, 0.06) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(45, 212, 191, 0.05) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, rgba(13, 148, 136, 0.06) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(20, 184, 166, 0.06) 0px, transparent 50%);
 }

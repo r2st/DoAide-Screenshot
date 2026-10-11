@@ -28,7 +28,7 @@ export default function ShareButtons() {
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-3 py-2 rounded-lg text-white text-xs font-medium hover:opacity-90 transition-opacity no-underline"
+          className="px-3 py-2 rounded-lg text-da-text text-xs font-medium hover:opacity-90 transition-opacity no-underline"
           style={{ backgroundColor: link.bg }}
         >
           {link.name}

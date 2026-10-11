@@ -119,28 +119,28 @@ export default function ComparisonSlider() {
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Preview */}
           <div className="flex-1 flex flex-col items-center">
-            <div className="w-full overflow-auto rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
+            <div className="w-full overflow-auto rounded-xl border border-da-border bg-[var(--da-input-bg)]/50 p-4">
               {!hasImages ? (
                 <div className="flex gap-4 justify-center py-8">
                   <div
                     onClick={() => beforeInputRef.current?.click()}
                     onDrop={handleDrop(setBeforeImage)}
                     onDragOver={e => e.preventDefault()}
-                    className="w-64 h-48 border-2 border-dashed border-slate-600 rounded-xl flex flex-col items-center justify-center cursor-pointer hover:border-brand-gold/50 transition-colors"
+                    className="w-64 h-48 border-2 border-dashed border-da-border rounded-xl flex flex-col items-center justify-center cursor-pointer hover:border-brand-primary/50 transition-colors"
                   >
-                    <div className="text-4xl text-slate-500 mb-2">+</div>
-                    <p className="text-slate-400 text-sm font-medium">Before Image</p>
-                    <p className="text-slate-500 text-xs mt-1">Click or drag</p>
+                    <div className="text-4xl text-da-muted mb-2">+</div>
+                    <p className="text-da-muted text-sm font-medium">Before Image</p>
+                    <p className="text-da-muted text-xs mt-1">Click or drag</p>
                   </div>
                   <div
                     onClick={() => afterInputRef.current?.click()}
                     onDrop={handleDrop(setAfterImage)}
                     onDragOver={e => e.preventDefault()}
-                    className="w-64 h-48 border-2 border-dashed border-slate-600 rounded-xl flex flex-col items-center justify-center cursor-pointer hover:border-brand-gold/50 transition-colors"
+                    className="w-64 h-48 border-2 border-dashed border-da-border rounded-xl flex flex-col items-center justify-center cursor-pointer hover:border-brand-primary/50 transition-colors"
                   >
-                    <div className="text-4xl text-slate-500 mb-2">+</div>
-                    <p className="text-slate-400 text-sm font-medium">After Image</p>
-                    <p className="text-slate-500 text-xs mt-1">Click or drag</p>
+                    <div className="text-4xl text-da-muted mb-2">+</div>
+                    <p className="text-da-muted text-sm font-medium">After Image</p>
+                    <p className="text-da-muted text-xs mt-1">Click or drag</p>
                   </div>
                 </div>
               ) : (
@@ -227,27 +227,27 @@ export default function ComparisonSlider() {
             <input ref={afterInputRef} type="file" accept="image/*" onChange={handleImageUpload(setAfterImage)} className="hidden" />
 
             <div className="flex gap-3 mt-4 w-full">
-              <button onClick={() => { beforeInputRef.current?.click(); }} className="px-4 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-colors text-sm">Before</button>
-              <button onClick={() => { afterInputRef.current?.click(); }} className="px-4 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-colors text-sm">After</button>
-              <button onClick={handleExport} disabled={exporting || !hasImages} className="flex-1 bg-brand-gold hover:bg-yellow-500 text-slate-900 font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50">
+              <button onClick={() => { beforeInputRef.current?.click(); }} className="px-4 py-3 bg-da-surface hover:bg-da-card-hover text-da-text rounded-lg transition-colors text-sm">Before</button>
+              <button onClick={() => { afterInputRef.current?.click(); }} className="px-4 py-3 bg-da-surface hover:bg-da-card-hover text-da-text rounded-lg transition-colors text-sm">After</button>
+              <button onClick={handleExport} disabled={exporting || !hasImages} className="flex-1 bg-brand-primary hover:bg-brand-primary-hover text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50">
                 {exporting ? 'Exporting...' : 'Download PNG'}
               </button>
-              <button onClick={handleCopy} disabled={exporting || !hasImages} className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-colors disabled:opacity-50">Copy</button>
+              <button onClick={handleCopy} disabled={exporting || !hasImages} className="px-6 py-3 bg-da-surface hover:bg-da-card-hover text-da-text rounded-lg transition-colors disabled:opacity-50">Copy</button>
             </div>
           </div>
 
           {/* Controls */}
           <div className="w-full lg:w-72 space-y-4">
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Slider Position: {Math.round(sliderPos)}%</label>
-              <input type="range" min="0" max="100" value={sliderPos} onChange={e => setSliderPos(Number(e.target.value))} className="w-full accent-brand-gold" />
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Slider Position: {Math.round(sliderPos)}%</label>
+              <input type="range" min="0" max="100" value={sliderPos} onChange={e => setSliderPos(Number(e.target.value))} className="w-full accent-brand-primary" />
             </div>
 
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
               <label className="flex items-center justify-between cursor-pointer">
-                <span className="text-sm text-slate-300">Show Labels</span>
+                <span className="text-sm text-da-muted">Show Labels</span>
                 <div
-                  className={`w-10 h-5 rounded-full transition-colors relative cursor-pointer ${showLabels ? 'bg-brand-gold' : 'bg-slate-600'}`}
+                  className={`w-10 h-5 rounded-full transition-colors relative cursor-pointer ${showLabels ? 'bg-brand-primary' : 'bg-da-border'}`}
                   onClick={() => setShowLabels(!showLabels)}
                 >
                   <div className={`w-4 h-4 rounded-full bg-white absolute top-0.5 transition-transform ${showLabels ? 'translate-x-5' : 'translate-x-0.5'}`} />
@@ -255,27 +255,27 @@ export default function ComparisonSlider() {
               </label>
             </div>
 
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Padding: {padding}px</label>
-              <input type="range" min="0" max="64" value={padding} onChange={e => setPadding(Number(e.target.value))} className="w-full accent-brand-gold" />
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Padding: {padding}px</label>
+              <input type="range" min="0" max="64" value={padding} onChange={e => setPadding(Number(e.target.value))} className="w-full accent-brand-primary" />
             </div>
 
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Border Radius: {borderRadius}px</label>
-              <input type="range" min="0" max="32" value={borderRadius} onChange={e => setBorderRadius(Number(e.target.value))} className="w-full accent-brand-gold" />
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Border Radius: {borderRadius}px</label>
+              <input type="range" min="0" max="32" value={borderRadius} onChange={e => setBorderRadius(Number(e.target.value))} className="w-full accent-brand-primary" />
             </div>
 
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Background</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Background</label>
               <div className="flex gap-2 mb-3">
                 {['gradient', 'solid', 'transparent'].map(t => (
-                  <button key={t} onClick={() => setBgType(t)} className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${bgType === t ? 'bg-brand-gold text-slate-900' : 'bg-slate-700 text-slate-300'}`}>{t.charAt(0).toUpperCase() + t.slice(1)}</button>
+                  <button key={t} onClick={() => setBgType(t)} className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${bgType === t ? 'bg-brand-primary text-white' : 'bg-da-surface text-da-muted'}`}>{t.charAt(0).toUpperCase() + t.slice(1)}</button>
                 ))}
               </div>
               {bgType === 'gradient' && (
                 <div className="grid grid-cols-4 gap-2">
                   {GRADIENTS.map((g, i) => (
-                    <button key={i} onClick={() => setBgGradient(g)} className={`w-full h-8 rounded-md border-2 ${bgGradient === g ? 'border-brand-gold' : 'border-transparent'}`} style={{ background: g }} />
+                    <button key={i} onClick={() => setBgGradient(g)} className={`w-full h-8 rounded-md border-2 ${bgGradient === g ? 'border-brand-primary' : 'border-transparent'}`} style={{ background: g }} />
                   ))}
                 </div>
               )}

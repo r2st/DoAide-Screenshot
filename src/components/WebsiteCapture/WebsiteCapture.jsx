@@ -123,8 +123,8 @@ export default function WebsiteCapture() {
     <div className="min-h-screen">
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold text-white mb-2">Website Screenshot Capture</h1>
-          <p className="text-slate-400 text-sm">Enter a URL to capture or upload a screenshot to beautify</p>
+          <h1 className="text-2xl font-bold text-da-text mb-2">Website Screenshot Capture</h1>
+          <p className="text-da-muted text-sm">Enter a URL to capture or upload a screenshot to beautify</p>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-6">
@@ -138,12 +138,12 @@ export default function WebsiteCapture() {
                 onChange={e => setUrl(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && captureWebsite()}
                 placeholder="Enter website URL (e.g., github.com)"
-                className="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-slate-200 text-sm focus:outline-none focus:border-brand-gold/50"
+                className="flex-1 bg-[var(--da-input-bg)] border border-da-border rounded-lg px-4 py-3 text-da-text text-sm focus:outline-none focus:border-brand-primary/50"
               />
               <button
                 onClick={captureWebsite}
                 disabled={loading || !url.trim()}
-                className="px-6 py-3 bg-brand-gold hover:bg-yellow-500 text-slate-900 font-semibold rounded-lg transition-colors disabled:opacity-50"
+                className="px-6 py-3 bg-brand-primary hover:bg-brand-primary-hover text-white font-semibold rounded-lg transition-colors disabled:opacity-50"
               >
                 {loading ? 'Capturing...' : 'Capture'}
               </button>
@@ -151,12 +151,12 @@ export default function WebsiteCapture() {
 
             {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
 
-            <div className="w-full overflow-auto rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
+            <div className="w-full overflow-auto rounded-xl border border-da-border bg-[var(--da-input-bg)]/50 p-4">
               {loading ? (
                 <div className="flex items-center justify-center py-20">
                   <div className="text-center">
-                    <div className="w-10 h-10 border-2 border-brand-gold border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-                    <p className="text-slate-400 text-sm">Capturing screenshot...</p>
+                    <div className="w-10 h-10 border-2 border-brand-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+                    <p className="text-da-muted text-sm">Capturing screenshot...</p>
                   </div>
                 </div>
               ) : image ? (
@@ -211,8 +211,8 @@ export default function WebsiteCapture() {
                   className="flex flex-col items-center justify-center py-16 cursor-pointer"
                 >
                   <div className="text-5xl text-slate-600 mb-4">+</div>
-                  <p className="text-slate-400 text-sm font-medium mb-1">Enter a URL above or drop a screenshot here</p>
-                  <p className="text-slate-500 text-xs">PNG, JPG supported</p>
+                  <p className="text-da-muted text-sm font-medium mb-1">Enter a URL above or drop a screenshot here</p>
+                  <p className="text-da-muted text-xs">PNG, JPG supported</p>
                 </div>
               )}
             </div>
@@ -223,21 +223,21 @@ export default function WebsiteCapture() {
             <div className="flex gap-3 mt-4 w-full">
               <button
                 onClick={() => fileInputRef.current?.click()}
-                className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-colors"
+                className="px-6 py-3 bg-da-surface hover:bg-da-card-hover text-da-text rounded-lg transition-colors"
               >
                 Upload
               </button>
               <button
                 onClick={handleExport}
                 disabled={exporting || !image}
-                className="flex-1 bg-brand-gold hover:bg-yellow-500 text-slate-900 font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50"
+                className="flex-1 bg-brand-primary hover:bg-brand-primary-hover text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50"
               >
                 {exporting ? 'Exporting...' : 'Download PNG'}
               </button>
               <button
                 onClick={handleCopy}
                 disabled={exporting || !image}
-                className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-colors disabled:opacity-50"
+                className="px-6 py-3 bg-da-surface hover:bg-da-card-hover text-da-text rounded-lg transition-colors disabled:opacity-50"
               >
                 Copy
               </button>
@@ -246,14 +246,14 @@ export default function WebsiteCapture() {
 
           {/* Controls */}
           <div className="w-full lg:w-72 space-y-4">
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Viewport</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Viewport</label>
               <div className="space-y-2">
                 {VIEWPORTS.map((vp, i) => (
                   <button
                     key={i}
                     onClick={() => setViewport(i)}
-                    className={`w-full px-3 py-2 rounded-lg text-xs font-medium text-left transition-colors ${viewport === i ? 'bg-brand-gold text-slate-900' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}`}
+                    className={`w-full px-3 py-2 rounded-lg text-xs font-medium text-left transition-colors ${viewport === i ? 'bg-brand-primary text-white' : 'bg-da-surface text-da-muted hover:bg-da-card-hover'}`}
                   >
                     {vp.icon} {vp.name} ({vp.width}x{vp.height})
                   </button>
@@ -261,37 +261,37 @@ export default function WebsiteCapture() {
               </div>
             </div>
 
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Padding: {padding}px</label>
-              <input type="range" min="0" max="96" value={padding} onChange={e => setPadding(Number(e.target.value))} className="w-full accent-brand-gold" />
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Padding: {padding}px</label>
+              <input type="range" min="0" max="96" value={padding} onChange={e => setPadding(Number(e.target.value))} className="w-full accent-brand-primary" />
             </div>
 
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 space-y-3">
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border space-y-3">
               <label className="flex items-center justify-between cursor-pointer">
-                <span className="text-sm text-slate-300">URL Bar</span>
-                <div className={`w-10 h-5 rounded-full transition-colors relative cursor-pointer ${showUrlBar ? 'bg-brand-gold' : 'bg-slate-600'}`} onClick={() => setShowUrlBar(!showUrlBar)}>
+                <span className="text-sm text-da-muted">URL Bar</span>
+                <div className={`w-10 h-5 rounded-full transition-colors relative cursor-pointer ${showUrlBar ? 'bg-brand-primary' : 'bg-da-border'}`} onClick={() => setShowUrlBar(!showUrlBar)}>
                   <div className={`w-4 h-4 rounded-full bg-white absolute top-0.5 transition-transform ${showUrlBar ? 'translate-x-5' : 'translate-x-0.5'}`} />
                 </div>
               </label>
               <label className="flex items-center justify-between cursor-pointer">
-                <span className="text-sm text-slate-300">Shadow</span>
-                <div className={`w-10 h-5 rounded-full transition-colors relative cursor-pointer ${shadow ? 'bg-brand-gold' : 'bg-slate-600'}`} onClick={() => setShadow(!shadow)}>
+                <span className="text-sm text-da-muted">Shadow</span>
+                <div className={`w-10 h-5 rounded-full transition-colors relative cursor-pointer ${shadow ? 'bg-brand-primary' : 'bg-da-border'}`} onClick={() => setShadow(!shadow)}>
                   <div className={`w-4 h-4 rounded-full bg-white absolute top-0.5 transition-transform ${shadow ? 'translate-x-5' : 'translate-x-0.5'}`} />
                 </div>
               </label>
             </div>
 
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Background</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Background</label>
               <div className="flex gap-2 mb-3">
                 {['gradient', 'solid', 'transparent'].map(t => (
-                  <button key={t} onClick={() => setBgType(t)} className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${bgType === t ? 'bg-brand-gold text-slate-900' : 'bg-slate-700 text-slate-300'}`}>{t.charAt(0).toUpperCase() + t.slice(1)}</button>
+                  <button key={t} onClick={() => setBgType(t)} className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${bgType === t ? 'bg-brand-primary text-white' : 'bg-da-surface text-da-muted'}`}>{t.charAt(0).toUpperCase() + t.slice(1)}</button>
                 ))}
               </div>
               {bgType === 'gradient' && (
                 <div className="grid grid-cols-4 gap-2">
                   {GRADIENTS.map((g, i) => (
-                    <button key={i} onClick={() => setBgGradient(g)} className={`w-full h-8 rounded-md border-2 ${bgGradient === g ? 'border-brand-gold' : 'border-transparent'}`} style={{ background: g }} />
+                    <button key={i} onClick={() => setBgGradient(g)} className={`w-full h-8 rounded-md border-2 ${bgGradient === g ? 'border-brand-primary' : 'border-transparent'}`} style={{ background: g }} />
                   ))}
                 </div>
               )}

@@ -21,7 +21,7 @@ describe('App', () => {
   it('renders the home page', () => {
     const { container } = render(
       <MemoryRouter initialEntries={['/']}>
-        <div className="min-h-screen flex flex-col bg-brand-darker">
+        <div className="min-h-screen flex flex-col bg-da-bg">
           <main className="flex-1">
             <div>
               <h1>Beautiful Screenshots in Seconds</h1>

@@ -60,8 +60,8 @@ export default function Blog() {
   return (
     <div className="min-h-screen">
       <div className="max-w-4xl mx-auto px-4 py-16">
-        <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 text-center">Blog</h1>
-        <p className="text-slate-400 text-center mb-12 max-w-xl mx-auto">
+        <h1 className="text-3xl md:text-4xl font-bold text-da-text mb-4 text-center">Blog</h1>
+        <p className="text-da-muted text-center mb-12 max-w-xl mx-auto">
           Tips, guides, and tutorials for creating better screenshots, mockups, and visual content.
         </p>
 
@@ -70,20 +70,20 @@ export default function Blog() {
             <Link
               key={post.slug}
               to={`/blog/${post.slug}`}
-              className="block group p-6 rounded-2xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/60 hover:border-slate-600 transition-all no-underline"
+              className="block group p-6 rounded-2xl border border-da-border bg-da-surface hover:bg-da-card-hover hover:border-brand-primary/30 transition-all no-underline"
             >
               <div className="flex flex-wrap gap-2 mb-3">
                 {post.tags.map(tag => (
-                  <span key={tag} className="px-2 py-0.5 bg-brand-gold/10 text-brand-gold text-xs font-medium rounded-full">
+                  <span key={tag} className="px-2 py-0.5 bg-brand-primary/10 text-brand-primary text-xs font-medium rounded-full">
                     {tag}
                   </span>
                 ))}
               </div>
-              <h2 className="text-xl font-semibold text-white mb-2 group-hover:text-brand-gold transition-colors">
+              <h2 className="text-xl font-semibold text-da-text mb-2 group-hover:text-brand-primary transition-colors">
                 {post.title}
               </h2>
-              <p className="text-slate-400 text-sm mb-3">{post.description}</p>
-              <div className="flex items-center gap-3 text-xs text-slate-500">
+              <p className="text-da-muted text-sm mb-3">{post.description}</p>
+              <div className="flex items-center gap-3 text-xs text-da-muted">
                 <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
                 <span>&#183;</span>
                 <span>{post.readTime}</span>

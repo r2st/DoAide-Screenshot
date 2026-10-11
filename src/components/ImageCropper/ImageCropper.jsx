@@ -191,7 +191,7 @@ export default function ImageCropper() {
 
   const handles = ['nw', 'ne', 'sw', 'se', 'n', 's', 'e', 'w'];
   const handleStyle = (pos) => {
-    const base = { position: 'absolute', width: 12, height: 12, background: '#F0B429', border: '2px solid #fff', zIndex: 10 };
+    const base = { position: 'absolute', width: 12, height: 12, background: '#0D9488', border: '2px solid #fff', zIndex: 10 };
     const map = {
       nw: { top: -6, left: -6, cursor: 'nw-resize' },
       ne: { top: -6, right: -6, cursor: 'ne-resize' },
@@ -209,14 +209,14 @@ export default function ImageCropper() {
     <div className="min-h-screen">
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold text-white mb-2">Image Cropper</h1>
-          <p className="text-slate-400 text-sm">Crop images to any size or aspect ratio, then download</p>
+          <h1 className="text-2xl font-bold text-da-text mb-2">Image Cropper</h1>
+          <p className="text-da-muted text-sm">Crop images to any size or aspect ratio, then download</p>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Preview */}
           <div className="flex-1 flex flex-col items-center">
-            <div className="w-full overflow-auto rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
+            <div className="w-full overflow-auto rounded-xl border border-da-border bg-[var(--da-input-bg)]/50 p-4">
               {!image ? (
                 <div
                   onClick={() => fileInputRef.current?.click()}
@@ -225,8 +225,8 @@ export default function ImageCropper() {
                   className="flex flex-col items-center justify-center py-20 cursor-pointer"
                 >
                   <div className="text-5xl text-slate-600 mb-4">+</div>
-                  <p className="text-slate-400 text-sm font-medium mb-1">Upload an image to crop</p>
-                  <p className="text-slate-500 text-xs">Click or drag & drop</p>
+                  <p className="text-da-muted text-sm font-medium mb-1">Upload an image to crop</p>
+                  <p className="text-da-muted text-xs">Click or drag & drop</p>
                 </div>
               ) : (
                 <div className="flex justify-center">
@@ -251,7 +251,7 @@ export default function ImageCropper() {
                         position: 'absolute',
                         left: crop.x, top: crop.y,
                         width: crop.w, height: crop.h,
-                        border: '2px solid #F0B429',
+                        border: '2px solid #0D9488',
                         cursor: 'move',
                       }}
                       onMouseDown={(e) => handlePointerDown(e, 'move')}
@@ -279,26 +279,26 @@ export default function ImageCropper() {
             <input ref={fileInputRef} type="file" accept="image/*" onChange={handleUpload} className="hidden" />
 
             <div className="flex gap-3 mt-4 w-full">
-              <button onClick={() => fileInputRef.current?.click()} className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-colors">
+              <button onClick={() => fileInputRef.current?.click()} className="px-6 py-3 bg-da-surface hover:bg-da-card-hover text-da-text rounded-lg transition-colors">
                 {image ? 'Change' : 'Upload'}
               </button>
-              <button onClick={handleExport} disabled={exporting || !image} className="flex-1 bg-brand-gold hover:bg-yellow-500 text-slate-900 font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50">
+              <button onClick={handleExport} disabled={exporting || !image} className="flex-1 bg-brand-primary hover:bg-brand-primary-hover text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50">
                 {exporting ? 'Exporting...' : `Download ${quality.toUpperCase()}`}
               </button>
-              <button onClick={handleCopy} disabled={exporting || !image} className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-colors disabled:opacity-50">Copy</button>
+              <button onClick={handleCopy} disabled={exporting || !image} className="px-6 py-3 bg-da-surface hover:bg-da-card-hover text-da-text rounded-lg transition-colors disabled:opacity-50">Copy</button>
             </div>
           </div>
 
           {/* Controls */}
           <div className="w-full lg:w-72 space-y-4">
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Aspect Ratio</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Aspect Ratio</label>
               <div className="grid grid-cols-2 gap-2">
                 {ASPECT_RATIOS.map(ar => (
                   <button
                     key={ar.name}
                     onClick={() => setAspectRatio(ar.value)}
-                    className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${aspectRatio === ar.value ? 'bg-brand-gold text-slate-900' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}`}
+                    className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${aspectRatio === ar.value ? 'bg-brand-primary text-white' : 'bg-da-surface text-da-muted hover:bg-da-card-hover'}`}
                   >
                     {ar.name}
                   </button>
@@ -306,14 +306,14 @@ export default function ImageCropper() {
               </div>
             </div>
 
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Format</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Format</label>
               <div className="flex gap-2">
                 {['png', 'jpg'].map(f => (
                   <button
                     key={f}
                     onClick={() => setQuality(f)}
-                    className={`flex-1 px-3 py-2 rounded-lg text-xs font-medium transition-colors uppercase ${quality === f ? 'bg-brand-gold text-slate-900' : 'bg-slate-700 text-slate-300'}`}
+                    className={`flex-1 px-3 py-2 rounded-lg text-xs font-medium transition-colors uppercase ${quality === f ? 'bg-brand-primary text-white' : 'bg-da-surface text-da-muted'}`}
                   >
                     {f}
                   </button>
@@ -322,9 +322,9 @@ export default function ImageCropper() {
             </div>
 
             {cropInfo && (
-              <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-                <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Output</label>
-                <p className="text-white text-sm">{cropInfo.outputW} x {cropInfo.outputH} px</p>
+              <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+                <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Output</label>
+                <p className="text-da-text text-sm">{cropInfo.outputW} x {cropInfo.outputH} px</p>
               </div>
             )}
           </div>

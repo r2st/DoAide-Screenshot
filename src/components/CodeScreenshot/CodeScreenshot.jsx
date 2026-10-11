@@ -179,7 +179,7 @@ export default function CodeScreenshot() {
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Preview */}
           <div className="flex-1 flex flex-col items-center">
-            <div className="w-full overflow-auto rounded-xl border border-slate-700/50 bg-slate-900/50 p-4">
+            <div className="w-full overflow-auto rounded-xl border border-da-border bg-[var(--da-input-bg)]/50 p-4">
               <div className="flex justify-center">
                 <div
                   ref={captureRef}
@@ -273,7 +273,7 @@ export default function CodeScreenshot() {
               <textarea
                 value={code}
                 onChange={e => setCode(e.target.value)}
-                className="w-full h-48 bg-slate-900 border border-slate-700 rounded-lg p-4 text-slate-200 font-mono text-sm resize-y focus:outline-none focus:border-brand-gold/50"
+                className="w-full h-48 bg-[var(--da-input-bg)] border border-da-border rounded-lg p-4 text-da-text font-mono text-sm resize-y focus:outline-none focus:border-brand-primary/50"
                 placeholder="Paste your code here..."
                 spellCheck={false}
               />
@@ -284,14 +284,14 @@ export default function CodeScreenshot() {
               <button
                 onClick={handleExport}
                 disabled={exporting}
-                className="flex-1 bg-brand-gold hover:bg-yellow-500 text-slate-900 font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50"
+                className="flex-1 bg-brand-primary hover:bg-brand-primary-hover text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50"
               >
                 {exporting ? 'Exporting...' : 'Download PNG'}
               </button>
               <button
                 onClick={handleCopy}
                 disabled={exporting}
-                className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-colors disabled:opacity-50"
+                className="px-6 py-3 bg-da-surface hover:bg-da-card-hover text-da-text rounded-lg transition-colors disabled:opacity-50"
               >
                 Copy
               </button>
@@ -301,12 +301,12 @@ export default function CodeScreenshot() {
           {/* Controls */}
           <div className="w-full lg:w-72 space-y-4">
             {/* Theme */}
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Theme</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Theme</label>
               <select
                 value={theme}
                 onChange={e => setTheme(e.target.value)}
-                className="w-full bg-slate-900 border border-slate-600 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-brand-gold/50"
+                className="w-full bg-[var(--da-input-bg)] border border-da-border rounded-lg px-3 py-2 text-sm text-da-text focus:outline-none focus:border-brand-primary/50"
               >
                 {Object.entries(THEMES).map(([key, t]) => (
                   <option key={key} value={key}>{t.name}</option>
@@ -315,12 +315,12 @@ export default function CodeScreenshot() {
             </div>
 
             {/* Language */}
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Language</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Language</label>
               <select
                 value={language}
                 onChange={e => setLanguage(e.target.value)}
-                className="w-full bg-slate-900 border border-slate-600 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-brand-gold/50"
+                className="w-full bg-[var(--da-input-bg)] border border-da-border rounded-lg px-3 py-2 text-sm text-da-text focus:outline-none focus:border-brand-primary/50"
               >
                 {LANGUAGES.map(l => (
                   <option key={l.value} value={l.value}>{l.label}</option>
@@ -329,57 +329,57 @@ export default function CodeScreenshot() {
             </div>
 
             {/* Title */}
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Title</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Title</label>
               <input
                 type="text"
                 value={title}
                 onChange={e => setTitle(e.target.value)}
-                className="w-full bg-slate-900 border border-slate-600 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-brand-gold/50"
+                className="w-full bg-[var(--da-input-bg)] border border-da-border rounded-lg px-3 py-2 text-sm text-da-text focus:outline-none focus:border-brand-primary/50"
               />
             </div>
 
             {/* Font Size */}
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Font Size: {fontSize}px</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Font Size: {fontSize}px</label>
               <input
                 type="range"
                 min="12"
                 max="24"
                 value={fontSize}
                 onChange={e => setFontSize(Number(e.target.value))}
-                className="w-full accent-brand-gold"
+                className="w-full accent-brand-primary"
               />
             </div>
 
             {/* Padding */}
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Padding: {padding}px</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Padding: {padding}px</label>
               <input
                 type="range"
                 min="16"
                 max="96"
                 value={padding}
                 onChange={e => setPadding(Number(e.target.value))}
-                className="w-full accent-brand-gold"
+                className="w-full accent-brand-primary"
               />
             </div>
 
             {/* Toggles */}
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 space-y-3">
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border space-y-3">
               <label className="flex items-center justify-between cursor-pointer">
-                <span className="text-sm text-slate-300">Line Numbers</span>
+                <span className="text-sm text-da-muted">Line Numbers</span>
                 <div
-                  className={`w-10 h-5 rounded-full transition-colors relative cursor-pointer ${showLineNumbers ? 'bg-brand-gold' : 'bg-slate-600'}`}
+                  className={`w-10 h-5 rounded-full transition-colors relative cursor-pointer ${showLineNumbers ? 'bg-brand-primary' : 'bg-da-border'}`}
                   onClick={() => setShowLineNumbers(!showLineNumbers)}
                 >
                   <div className={`w-4 h-4 rounded-full bg-white absolute top-0.5 transition-transform ${showLineNumbers ? 'translate-x-5' : 'translate-x-0.5'}`} />
                 </div>
               </label>
               <label className="flex items-center justify-between cursor-pointer">
-                <span className="text-sm text-slate-300">Window Frame</span>
+                <span className="text-sm text-da-muted">Window Frame</span>
                 <div
-                  className={`w-10 h-5 rounded-full transition-colors relative cursor-pointer ${showWindow ? 'bg-brand-gold' : 'bg-slate-600'}`}
+                  className={`w-10 h-5 rounded-full transition-colors relative cursor-pointer ${showWindow ? 'bg-brand-primary' : 'bg-da-border'}`}
                   onClick={() => setShowWindow(!showWindow)}
                 >
                   <div className={`w-4 h-4 rounded-full bg-white absolute top-0.5 transition-transform ${showWindow ? 'translate-x-5' : 'translate-x-0.5'}`} />
@@ -388,14 +388,14 @@ export default function CodeScreenshot() {
             </div>
 
             {/* Background */}
-            <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
-              <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Background</label>
+            <div className="bg-[var(--da-sidebar-bg)]/50 rounded-xl p-4 border border-da-border">
+              <label className="block text-xs font-medium text-da-muted mb-2 uppercase tracking-wider">Background</label>
               <div className="flex gap-2 mb-3">
                 {['gradient', 'solid', 'transparent'].map(t => (
                   <button
                     key={t}
                     onClick={() => setBgType(t)}
-                    className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${bgType === t ? 'bg-brand-gold text-slate-900' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}`}
+                    className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${bgType === t ? 'bg-brand-primary text-white' : 'bg-da-surface text-da-muted hover:bg-da-card-hover'}`}
                   >
                     {t.charAt(0).toUpperCase() + t.slice(1)}
                   </button>
@@ -407,7 +407,7 @@ export default function CodeScreenshot() {
                     <button
                       key={i}
                       onClick={() => setBgGradient(g)}
-                      className={`w-full h-8 rounded-md border-2 transition-colors ${bgGradient === g ? 'border-brand-gold' : 'border-transparent'}`}
+                      className={`w-full h-8 rounded-md border-2 transition-colors ${bgGradient === g ? 'border-brand-primary' : 'border-transparent'}`}
                       style={{ background: g }}
                     />
                   ))}
